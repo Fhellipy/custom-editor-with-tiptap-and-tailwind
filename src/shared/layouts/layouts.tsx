@@ -1,4 +1,4 @@
-import { Header } from "@/shared";
+import { Header } from "@/shared/components";
 
 type LayoutProps = {
   children: React.ReactNode;
