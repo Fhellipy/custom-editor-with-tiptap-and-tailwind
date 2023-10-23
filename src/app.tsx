@@ -1,11 +1,13 @@
-import { ColorPalette, Header } from "./components";
+import { BrowserRouter } from "react-router-dom";
+import { Routes } from "@/routes";
+import { Layout } from "@/shared/layouts";
 
 export default function App() {
   return (
-    <div className="h-full w-full overflow-auto p-4">
-      <Header />
-
-      <ColorPalette />
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Routes />
+      </Layout>
+    </BrowserRouter>
   );
 }
