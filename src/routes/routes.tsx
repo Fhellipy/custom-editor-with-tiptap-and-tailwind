@@ -1,5 +1,6 @@
+import { ColorPalette } from "@/pages";
 import { Routes as AllRoutes, Route } from "react-router-dom";
-import { ColorPalette, Editor } from "@/pages";
+import { Editor } from "./Editor";
 
 export function Routes() {
   return (
