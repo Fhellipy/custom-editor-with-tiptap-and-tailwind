@@ -1,0 +1,16 @@
+.editor > div {
+  padding: 1rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.25rem;
+  outline: none;
+
+  & * p,
+  li,
+  ul {
+    margin: 0;
+  }
+
+  &:focus {
+    border-color: hsl(var(--ring));
+  }
+}
