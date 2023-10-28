@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
 
-export function ColorPalette() {
+export default function ColorPalette() {
   return (
     <details className="group flex flex-col border rounded p-4">
       <summary className="flex items-center justify-between relative cursor-pointer p-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background focus-visible:rounded">
