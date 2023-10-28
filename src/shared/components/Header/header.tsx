@@ -1,5 +1,6 @@
 import { Moon, Sun } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -10,21 +11,21 @@ export function Header() {
   };
 
   const routes = [
-    { name: "Home", href: "/" },
-    { name: "Paleta de Cores", href: "colors-palette" },
+    { name: "Home", to: "/" },
+    { name: "Paleta de Cores", to: "colors-palette" },
   ];
 
   return (
     <header className="flex items-center justify-end border rounded p-2 mb-4 gap-2">
       <nav className="inline-block">
-        {routes.map(({ name, href }) => (
-          <a
+        {routes.map(({ name, to }) => (
+          <Link
             key={name}
-            href={href}
+            to={to}
             className="inline-block px-4 py-2 border-r last:border-none hover:bg-card hover:text-card-foreground"
           >
             {name}
-          </a>
+          </Link>
         ))}
       </nav>
 
