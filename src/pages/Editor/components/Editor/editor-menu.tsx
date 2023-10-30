@@ -6,15 +6,22 @@ import {
   ListIcon,
   ListOrderedIcon,
   QuoteIcon,
+  RotateCcwIcon,
+  RotateCwIcon,
+  SplitSquareHorizontalIcon,
   StrikethroughIcon,
   UnderlineIcon,
+  WrapTextIcon,
 } from "lucide-react";
 import {
   ButtonMenu,
   ButtonMenuFontFamily,
   ButtonMenuHeading,
+  ButtonMenuScript,
+  ButtonMenuTable,
+  ButtonMenuTextAlign,
+  ButtonMenuTextColor,
 } from "../Buttons";
-import { ButtonMenuTextColor } from "../Buttons/button-menu-text-color";
 
 type EditorMenuProps = {
   editor: Editor | null;
@@ -63,7 +70,6 @@ export function EditorMenu({ editor }: EditorMenuProps) {
         title="Lista Ordenada"
         icon={<ListOrderedIcon size={20} />}
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
-        disabled={!editor.can().chain().focus().toggleOrderedList().run()}
         active={editor.isActive("orderedList")}
       />
 
@@ -71,7 +77,6 @@ export function EditorMenu({ editor }: EditorMenuProps) {
         title="Lista Não Ordenada"
         icon={<ListIcon size={20} />}
         onClick={() => editor.chain().focus().toggleBulletList().run()}
-        disabled={!editor.can().chain().focus().toggleBulletList().run()}
         active={editor.isActive("bulletList")}
       />
 
@@ -79,12 +84,20 @@ export function EditorMenu({ editor }: EditorMenuProps) {
       <ButtonMenuFontFamily editor={editor} />
       <ButtonMenuTextColor editor={editor} />
 
+      <ButtonMenuTextAlign editor={editor} />
+      <ButtonMenuScript editor={editor} />
+      <ButtonMenuTable editor={editor} />
+
       <ButtonMenu
-        title="Código"
-        icon={<CodeIcon size={18} />}
-        onClick={() => editor.chain().focus().toggleCode().run()}
-        disabled={!editor.can().chain().focus().toggleCode().run()}
-        active={editor.isActive("code")}
+        title="Quebra de Linha"
+        icon={<WrapTextIcon size={20} />}
+        onClick={() => editor.chain().focus().setHardBreak().run()}
+      />
+
+      <ButtonMenu
+        title="Linha Horizontal"
+        icon={<SplitSquareHorizontalIcon size={20} />}
+        onClick={() => editor.chain().focus().setHorizontalRule().run()}
       />
 
       <ButtonMenu
@@ -93,6 +106,26 @@ export function EditorMenu({ editor }: EditorMenuProps) {
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
         disabled={!editor.can().chain().focus().toggleBlockquote().run()}
         active={editor.isActive("blockquote")}
+      />
+
+      <ButtonMenu
+        title="Código"
+        icon={<CodeIcon size={18} />}
+        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+        disabled={!editor.can().chain().focus().toggleCodeBlock().run()}
+        active={editor.isActive("codeBlock")}
+      />
+
+      <ButtonMenu
+        title="Desfazer"
+        icon={<RotateCcwIcon size={18} />}
+        onClick={() => editor.chain().focus().undo().run()}
+      />
+
+      <ButtonMenu
+        title="Refazer"
+        icon={<RotateCwIcon size={18} />}
+        onClick={() => editor.chain().focus().redo().run()}
       />
     </div>
   );
