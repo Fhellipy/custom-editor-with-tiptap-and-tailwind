@@ -1,7 +1,16 @@
 import { cn } from "@/shared/lib";
 import { Color } from "@tiptap/extension-color";
 import { FontFamily } from "@tiptap/extension-font-family";
+import { Highlight } from "@tiptap/extension-highlight";
+import { Subscript } from "@tiptap/extension-subscript";
+import { Superscript } from "@tiptap/extension-superscript";
+import { Table } from "@tiptap/extension-table";
+import { TableCell } from "@tiptap/extension-table-cell";
+import { TableHeader } from "@tiptap/extension-table-header";
+import { TableRow } from "@tiptap/extension-table-row";
+import { TextAlign } from "@tiptap/extension-text-align";
 import { TextStyle } from "@tiptap/extension-text-style";
+import { Typography } from "@tiptap/extension-typography";
 import { Underline } from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
@@ -19,6 +28,7 @@ const extensions = [
       keepAttributes: false,
     },
   }),
+  Underline,
   TextStyle,
   FontFamily.configure({
     types: ["textStyle"],
@@ -26,7 +36,21 @@ const extensions = [
   Color.configure({
     types: ["textStyle"],
   }),
-  Underline,
+  Highlight.configure({
+    multicolor: true,
+  }),
+  TextAlign.configure({
+    types: ["heading", "paragraph"],
+  }),
+  Typography,
+  Superscript,
+  Subscript,
+  Table.configure({
+    resizable: true,
+  }),
+  TableRow,
+  TableHeader,
+  TableCell,
 ];
 
 export function EditorComponent() {
@@ -44,7 +68,7 @@ export function EditorComponent() {
       <EditorContent
         editor={editor}
         className={cn(
-          "prose prose-p:m-0 prose-ul:m-0 prose-ol:m-0 prose-li:m-0 prose-blockquote:m-0 prose-h1:m-0 prose-h2:m-0 prose-h3:m-0 prose-h4:m-0 prose-h5:m-0 prose-h6:m-0 prose-h1:text-foreground prose-h2:text-foreground prose-h3:text-foreground prose-h4:text-foreground prose-h5:text-foreground prose-h6:text-foreground max-w-none w-full h-full",
+          "prose-table:border prose-table:max-w-full prose-col:border prose prose-hr:my-2 prose-p:m-0 prose-ul:m-0 prose-ol:m-0 prose-li:m-0 prose-blockquote:m-0 prose-h1:m-0 prose-h2:m-0 prose-h3:m-0 prose-h4:m-0 prose-h5:m-0 prose-h6:m-0 prose-h1:text-foreground prose-h2:text-foreground prose-h3:text-foreground prose-h4:text-foreground prose-h5:text-foreground prose-h6:text-foreground max-w-none w-full h-full text-foreground dark:text-foreground",
           css.editor,
         )}
       />
