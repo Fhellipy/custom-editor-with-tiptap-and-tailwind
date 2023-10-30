@@ -73,4 +73,16 @@
   button {
     @apply focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background focus-visible:rounded;
   }
+
+  col {
+    @apply border-l border-border cursor-col-resize;
+  }
+
+  th > p,
+  td > p {
+    @apply cursor-text;
+  }
+  tr {
+    @apply cursor-col-resize;
+  }
 }
