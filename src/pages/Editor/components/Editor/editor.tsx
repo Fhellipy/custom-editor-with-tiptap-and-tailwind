@@ -14,6 +14,7 @@ import { Typography } from "@tiptap/extension-typography";
 import { Underline } from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
+import CustomImageExtensionNode from "../UploadImage/custom-image";
 import { EditorMenu } from "./editor-menu";
 import css from "./editor.module.css";
 
@@ -51,6 +52,7 @@ const extensions = [
   TableRow,
   TableHeader,
   TableCell,
+  CustomImageExtensionNode,
 ];
 
 export function EditorComponent() {
