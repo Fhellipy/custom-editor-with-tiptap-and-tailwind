@@ -14,10 +14,13 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
+    "@pqina/pintura": "^8.67.1",
+    "@tiptap/core": "^2.1.12",
     "@tiptap/extension-bullet-list": "^2.1.12",
     "@tiptap/extension-color": "^2.1.12",
     "@tiptap/extension-font-family": "^2.1.12",
     "@tiptap/extension-highlight": "^2.1.12",
+    "@tiptap/extension-image": "^2.1.12",
     "@tiptap/extension-list-item": "^2.1.12",
     "@tiptap/extension-ordered-list": "^2.1.12",
     "@tiptap/extension-subscript": "^2.1.12",
@@ -39,6 +42,8 @@
     "react": "^18.2.0",
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-images-uploading": "^3.1.7",
     "react-router-dom": "^6.17.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7"
