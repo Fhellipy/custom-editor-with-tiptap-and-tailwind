@@ -2,6 +2,7 @@ import { Editor } from "@tiptap/react";
 import {
   BoldIcon,
   CodeIcon,
+  ImageIcon,
   ItalicIcon,
   ListIcon,
   ListOrderedIcon,
@@ -23,6 +24,7 @@ import {
   ButtonMenuTextAlign,
   ButtonMenuTextColor,
 } from "../Buttons";
+import { ButtonMenuUploadImage } from "../Buttons/button-menu-upload-image";
 
 type EditorMenuProps = {
   editor: Editor | null;
@@ -86,8 +88,15 @@ export function EditorMenu({ editor }: EditorMenuProps) {
       <ButtonMenuTextColor editor={editor} />
 
       <ButtonMenuTextAlign editor={editor} />
-      <ButtonMenuScript editor={editor} />
+      <ButtonMenuUploadImage
+        title="Adicionar Imagem"
+        icon={<ImageIcon size={20} />}
+        onChange={src => {
+          editor?.chain().focus().setCustomImage({ src }).run();
+        }}
+      />
       <ButtonMenuTable editor={editor} />
+      <ButtonMenuScript editor={editor} />
 
       <ButtonMenu
         title="Quebra de Linha"
