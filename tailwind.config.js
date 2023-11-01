@@ -50,6 +50,17 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      animation: {
+        "scale-up": "scale-up 200ms",
+      },
+      keyframes: {
+        "scale-up": {
+          "0%": { transform: "rotate(10deg)" },
+          "25%": { transform: "rotate(-10deg)" },
+          "50%": { transform: "rotate(10deg)" },
+          "100%": { transform: "rotate(-10deg)" },
+        },
+      },
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
