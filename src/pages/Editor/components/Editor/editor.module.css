@@ -4,12 +4,6 @@
   border-radius: 0.25rem;
   outline: none;
 
-  & * p,
-  li,
-  ul {
-    margin: 0;
-  }
-
   &:focus {
     border-color: hsl(var(--ring));
   }
