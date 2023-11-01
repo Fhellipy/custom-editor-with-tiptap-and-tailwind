@@ -6,6 +6,7 @@ import {
   ListIcon,
   ListOrderedIcon,
   QuoteIcon,
+  RemoveFormattingIcon,
   RotateCcwIcon,
   RotateCwIcon,
   SplitSquareHorizontalIcon,
@@ -114,6 +115,15 @@ export function EditorMenu({ editor }: EditorMenuProps) {
         onClick={() => editor.chain().focus().toggleCodeBlock().run()}
         disabled={!editor.can().chain().focus().toggleCodeBlock().run()}
         active={editor.isActive("codeBlock")}
+      />
+
+      <ButtonMenu
+        onClick={() => {
+          editor.chain().focus().clearNodes().run();
+          editor.chain().focus().unsetAllMarks().run();
+        }}
+        icon={<RemoveFormattingIcon size={18} />}
+        title="Remover Formatação"
       />
 
       <ButtonMenu
