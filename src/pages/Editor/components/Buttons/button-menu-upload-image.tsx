@@ -31,6 +31,12 @@ export function ButtonMenuUploadImage(props: Props) {
         onChange(base64);
       }
     },
+
+    onDropRejected: () => {
+      toast.error(
+        "Arquivo inválido. Os formatos aceitos são: JPG, JPEG e PNG.",
+      );
+    },
   });
 
   return (
