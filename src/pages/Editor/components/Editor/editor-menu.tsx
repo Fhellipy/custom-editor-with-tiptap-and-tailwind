@@ -23,8 +23,10 @@ import {
   ButtonMenuTable,
   ButtonMenuTextAlign,
   ButtonMenuTextColor,
+  ButtonMenuUploadImage,
+  ButtonMenuUploadLink,
+  ButtonMenuUploadVideo,
 } from "../Buttons";
-import { ButtonMenuUploadImage } from "../Buttons/button-menu-upload-image";
 
 type EditorMenuProps = {
   editor: Editor | null;
@@ -88,6 +90,7 @@ export function EditorMenu({ editor }: EditorMenuProps) {
       <ButtonMenuTextColor editor={editor} />
 
       <ButtonMenuTextAlign editor={editor} />
+
       <ButtonMenuUploadImage
         title="Adicionar Imagem"
         icon={<ImageIcon size={20} />}
@@ -95,6 +98,10 @@ export function EditorMenu({ editor }: EditorMenuProps) {
           editor?.chain().focus().setCustomImage({ src }).run();
         }}
       />
+
+      <ButtonMenuUploadVideo editor={editor} />
+      <ButtonMenuUploadLink editor={editor} />
+
       <ButtonMenuTable editor={editor} />
       <ButtonMenuScript editor={editor} />
 
