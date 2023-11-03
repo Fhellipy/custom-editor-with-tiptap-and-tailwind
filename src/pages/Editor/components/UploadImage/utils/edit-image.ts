@@ -1,9 +1,9 @@
-import { ImageType } from "react-images-uploading";
 import { openDefaultEditor } from "../assets/pintura";
 
-// export type FileWithPreview = File & ImageType;
-export type FileWithPreview = File &
-  ImageType & { preview?: string; pintura?: ImageType };
+export type FileWithPreview = {
+  data_url?: string;
+  file: File;
+};
 
 type EditorObjectType = {
   handleEvent: (...t: any[]) => void;
@@ -12,10 +12,10 @@ type EditorObjectType = {
 };
 
 export const editImage = async (
-  image: File,
+  image: FileWithPreview,
   done: (dest: FileWithPreview) => void,
 ) => {
-  const editor = openDefaultEditor({ src: image }) as EditorObjectType;
+  const editor = openDefaultEditor({ src: image.data_url }) as EditorObjectType;
 
   editor.on("process", ({ dest }: { dest: FileWithPreview }) => {
     done(dest);
