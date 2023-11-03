@@ -29,6 +29,9 @@ dependencies:
   '@tiptap/extension-image':
     specifier: ^2.1.12
     version: 2.1.12(@tiptap/core@2.1.12)
+  '@tiptap/extension-link':
+    specifier: ^2.1.12
+    version: 2.1.12(@tiptap/core@2.1.12)(@tiptap/pm@2.1.12)
   '@tiptap/extension-list-item':
     specifier: ^2.1.12
     version: 2.1.12(@tiptap/core@2.1.12)
@@ -65,6 +68,9 @@ dependencies:
   '@tiptap/extension-underline':
     specifier: ^2.1.12
     version: 2.1.12(@tiptap/core@2.1.12)
+  '@tiptap/extension-youtube':
+    specifier: ^2.1.12
+    version: 2.1.12(@tiptap/core@2.1.12)
   '@tiptap/pm':
     specifier: ^2.1.12
     version: 2.1.12
@@ -95,6 +101,9 @@ dependencies:
   react-dropzone:
     specifier: ^14.2.3
     version: 14.2.3(react@18.2.0)
+  react-hot-toast:
+    specifier: ^2.4.1
+    version: 2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0)
   react-images-uploading:
     specifier: ^3.1.7
     version: 3.1.7(react-dom@18.2.0)(react@18.2.0)
@@ -974,6 +983,17 @@ packages:
       '@tiptap/core': 2.1.12(@tiptap/pm@2.1.12)
     dev: false
 
+  /@tiptap/extension-link@2.1.12(@tiptap/core@2.1.12)(@tiptap/pm@2.1.12):
+    resolution: {integrity: sha512-Sti5hhlkCqi5vzdQjU/gbmr8kb578p+u0J4kWS+SSz3BknNThEm/7Id67qdjBTOQbwuN07lHjDaabJL0hSkzGQ==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.12(@tiptap/pm@2.1.12)
+      '@tiptap/pm': 2.1.12
+      linkifyjs: 4.1.1
+    dev: false
+
   /@tiptap/extension-list-item@2.1.12(@tiptap/core@2.1.12):
     resolution: {integrity: sha512-Gk7hBFofAPmNQ8+uw8w5QSsZOMEGf7KQXJnx5B022YAUJTYYxO3jYVuzp34Drk9p+zNNIcXD4kc7ff5+nFOTrg==}
     peerDependencies:
@@ -1090,6 +1110,14 @@ packages:
 
   /@tiptap/extension-underline@2.1.12(@tiptap/core@2.1.12):
     resolution: {integrity: sha512-NwwdhFT8gDD0VUNLQx85yFBhP9a8qg8GPuxlGzAP/lPTV8Ubh3vSeQ5N9k2ZF/vHlEvnugzeVCbmYn7wf8vn1g==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.12(@tiptap/pm@2.1.12)
+    dev: false
+
+  /@tiptap/extension-youtube@2.1.12(@tiptap/core@2.1.12):
+    resolution: {integrity: sha512-Kr/sGESmWDNCKHEgbpAFCZJgvGYBuFNGUUY1eIxXRSz3w7sxS+cQ8xQ0+7jD2f2BVaJgdy7kf/V0wQ6ocGdHbw==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
     dependencies:
@@ -1614,7 +1642,6 @@ packages:
 
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
-    dev: true
 
   /dash-get@1.0.2:
     resolution: {integrity: sha512-4FbVrHDwfOASx7uQVxeiCTo7ggSdYZbqs8lH+WU6ViypPlDbe9y6IP5VVUDQBv9DcnyaiPT5XT0UWHgJ64zLeQ==}
@@ -2071,6 +2098,14 @@ packages:
       slash: 3.0.0
     dev: true
 
+  /goober@2.1.13(csstype@3.1.2):
+    resolution: {integrity: sha512-jFj3BQeleOoy7t93E9rZ2de+ScC4lQICLwiAQmKMg9F6roKGaLSHoCDYKkWlSafg138jejvq/mTdvmnwDQgqoQ==}
+    peerDependencies:
+      csstype: ^3.0.10
+    dependencies:
+      csstype: 3.1.2
+    dev: false
+
   /grapheme-splitter@1.0.4:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
     dev: true
@@ -2283,6 +2318,10 @@ packages:
     resolution: {integrity: sha512-C7bfi1UZmoj8+PQx22XyeXCuBlokoyWQL5pWSP+EI6nzRylyThouddufc2c1NDIcP9k5agmN9fLpA7VNJfIiqw==}
     dependencies:
       uc.micro: 1.0.6
+    dev: false
+
+  /linkifyjs@4.1.1:
+    resolution: {integrity: sha512-zFN/CTVmbcVef+WaDXT63dNzzkfRBKT1j464NJQkV7iSgJU0sLBus9W0HBwnXK13/hf168pbrx/V/bjEHOXNHA==}
     dev: false
 
   /locate-path@6.0.0:
@@ -2867,6 +2906,20 @@ packages:
       file-selector: 0.6.0
       prop-types: 15.8.1
       react: 18.2.0
+    dev: false
+
+  /react-hot-toast@2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-j8z+cQbWIM5LY37pR6uZR6D4LfseplqnuAO4co4u8917hBUvXlEqyP1ZzqVLcqoyUesZZv/ImreoCeHVDpE5pQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      goober: 2.1.13(csstype@3.1.2)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - csstype
     dev: false
 
   /react-images-uploading@3.1.7(react-dom@18.2.0)(react@18.2.0):
