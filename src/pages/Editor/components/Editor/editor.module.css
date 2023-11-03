@@ -3,8 +3,8 @@
   border: 1px solid hsl(var(--border));
   border-radius: 0.25rem;
   outline: none;
+}
 
-  &:focus {
-    border-color: hsl(var(--ring));
-  }
+.editor > div:focus {
+  border-color: hsl(var(--ring));
 }
