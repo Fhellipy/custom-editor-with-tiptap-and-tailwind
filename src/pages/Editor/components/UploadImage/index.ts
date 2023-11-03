@@ -1,1 +1,1 @@
-export * from "./upload-image";
+export { default as CustomImageExtensionNode } from "./custom-image";
