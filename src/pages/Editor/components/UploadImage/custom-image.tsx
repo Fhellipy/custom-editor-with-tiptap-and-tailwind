@@ -1,3 +1,4 @@
+import { cn } from "@/shared/lib";
 import { Node, mergeAttributes, type NodeViewProps } from "@tiptap/core";
 import { NodeViewWrapper, ReactNodeViewRenderer } from "@tiptap/react";
 import "./assets/pintura.css";
@@ -7,6 +8,7 @@ export type CustomsImageNodeAttributes = {
   src?: string;
   alt?: string;
   title?: string;
+  justify?: "center" | "flex-start" | "flex-end";
 };
 
 declare module "@tiptap/core" {
@@ -20,9 +22,27 @@ declare module "@tiptap/core" {
 type ImageVisualizationProps = NodeViewProps;
 
 function ImageNodeVisualization(props: ImageVisualizationProps) {
+  const getAlignment = () => {
+    let justify = "flex-start";
+
+    switch (props.node.attrs.justify) {
+      case "center":
+        justify = "justify-center";
+        break;
+      case "flex-end":
+        justify = "justify-end";
+        break;
+      default:
+        justify = "justify-start";
+        break;
+    }
+
+    return justify;
+  };
+
   return (
-    <NodeViewWrapper className="counterNode">
-      <div className="relative h-fit flex flex-col items-center flex-wrap border overflow-hidden cursor-pointer group">
+    <NodeViewWrapper className={cn("flex w-full", getAlignment())}>
+      <div className="w-fit relative h-fit flex flex-col items-center flex-wrap border overflow-hidden cursor-pointer group">
         <img
           src={props.node.attrs.src}
           alt={props.node.attrs.alt}
@@ -32,6 +52,7 @@ function ImageNodeVisualization(props: ImageVisualizationProps) {
 
         <ButtonsCustomImage
           defaultValues={props.node.attrs}
+          deleteNode={() => props.deleteNode()}
           onSave={image => {
             props.updateAttributes(image);
           }}
@@ -67,10 +88,13 @@ export default Node.create({
         default: null,
       },
       alt: {
-        default: null,
+        default: "Essa imagem não tem texto alternativo.",
       },
       title: {
-        default: null,
+        default: "Essa imagem não tem titulo.",
+      },
+      justify: {
+        default: "flex-start",
       },
     };
   },
