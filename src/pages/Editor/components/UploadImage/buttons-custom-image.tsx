@@ -1,46 +1,42 @@
-import { PenSquareIcon, RefreshCcwIcon, TrashIcon } from "lucide-react";
-import { ButtonMenuUploadImage } from "../Buttons/button-menu-upload-image";
+import { CropIcon, RefreshCcwIcon, TrashIcon } from "lucide-react";
+import { ButtonMenuUploadImage } from "../Buttons";
+import { AdditionalImageInformationModal } from "./additional-image-information-modal";
 import { ButtonAction } from "./button-action";
 import { CustomsImageNodeAttributes } from "./custom-image";
 import { convertToBase64, editImage } from "./utils";
 
 type ButtonsCustomImageProps = {
   defaultValues: CustomsImageNodeAttributes;
+  deleteNode: () => void;
   onSave: (image: CustomsImageNodeAttributes) => void;
 };
 
 export function ButtonsCustomImage({
   defaultValues,
+  deleteNode,
   onSave,
 }: ButtonsCustomImageProps) {
   return (
-    <div className="w-full invisible group-hover:visible absolute h-10 transform -translate-y-full transition-transform duration-200 backdrop-blur-md bg-primary flex items-center justify-between group-hover:translate-y-0 animate-scale-up px-4 gap-2">
-      <ButtonAction
-        title="Atualizar Imagem"
-        icon={<RefreshCcwIcon size={16} />}
-        onClick={() => {
-          onSave({
-            ...defaultValues,
-            alt: "mudamos o trem",
-            title: "mudamos o trem",
-          });
-        }}
-      />
-
+    <div className="w-full flex-wrap invisible group-hover:visible absolute mix-h-10 h-fit transform -translate-y-full transition-transform duration-200 backdrop-blur-md bg-primary flex items-center justify-between group-hover:translate-y-0 animate-scale-up px-4 py-2 gap-2">
       <ButtonMenuUploadImage
         variant
         title="Atualizar Imagem"
         icon={<RefreshCcwIcon size={16} />}
         onChange={src => {
-          onSave({ ...defaultValues, src });
+          onSave({
+            ...defaultValues,
+            src,
+            alt: defaultValues.alt ?? "Essa imagem não tem texto alternativo.",
+            title: defaultValues.title ?? "Essa imagem não tem titulo.",
+          });
         }}
       />
 
       <ButtonAction
-        title="Editar"
-        icon={<PenSquareIcon size={16} />}
+        title="Editar imagem"
+        icon={<CropIcon size={16} />}
         onClick={() => {
-          const image = new File(
+          const file = new File(
             [new Blob([defaultValues.src ?? ""])],
             defaultValues.title ?? "image",
             {
@@ -48,22 +44,36 @@ export function ButtonsCustomImage({
             },
           );
 
+          const image = {
+            data_url: defaultValues.src ?? "",
+            file,
+          };
+
           editImage(image, async newFile => {
-            const file = new File([newFile], newFile.name, {
-              type: newFile.type,
+            const file = newFile as unknown as File;
+
+            const dataUrl = (await convertToBase64(file)) as string;
+
+            onSave({
+              ...defaultValues,
+              src: dataUrl ?? "",
+              alt:
+                defaultValues.alt ?? "Essa imagem não tem texto alternativo.",
+              title: defaultValues.title ?? "Essa imagem não tem titulo.",
             });
-
-            const dataUrl = await convertToBase64(file);
-
-            console.log(dataUrl);
           });
         }}
+      />
+
+      <AdditionalImageInformationModal
+        defaultValues={defaultValues}
+        onSave={onSave}
       />
 
       <ButtonAction
         title="Deletar"
         icon={<TrashIcon size={16} />}
-        onClick={() => {}}
+        onClick={deleteNode}
       />
     </div>
   );
