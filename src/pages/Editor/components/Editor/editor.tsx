@@ -2,6 +2,7 @@ import { cn } from "@/shared/lib";
 import { Color } from "@tiptap/extension-color";
 import { FontFamily } from "@tiptap/extension-font-family";
 import { Highlight } from "@tiptap/extension-highlight";
+import { Link } from "@tiptap/extension-link";
 import { Subscript } from "@tiptap/extension-subscript";
 import { Superscript } from "@tiptap/extension-superscript";
 import { Table } from "@tiptap/extension-table";
@@ -12,9 +13,10 @@ import { TextAlign } from "@tiptap/extension-text-align";
 import { TextStyle } from "@tiptap/extension-text-style";
 import { Typography } from "@tiptap/extension-typography";
 import { Underline } from "@tiptap/extension-underline";
+import { Youtube } from "@tiptap/extension-youtube";
 import { EditorContent, useEditor } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
-import CustomImageExtensionNode from "../UploadImage/custom-image";
+import { CustomImageExtensionNode } from "../UploadImage";
 import { EditorMenu } from "./editor-menu";
 import css from "./editor.module.css";
 
@@ -53,6 +55,19 @@ const extensions = [
   TableHeader,
   TableCell,
   CustomImageExtensionNode,
+  Youtube.configure({
+    inline: true,
+    nocookie: true,
+    ccLanguage: "pt-BR",
+    controls: true,
+  }),
+  Link.configure({
+    openOnClick: true,
+    linkOnPaste: true,
+    HTMLAttributes: {
+      class: "text-primary hover:underline cursor-pointer",
+    },
+  }),
 ];
 
 export function EditorComponent() {
