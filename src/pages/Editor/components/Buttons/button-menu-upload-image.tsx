@@ -3,6 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { ImageIcon } from "lucide-react";
 import { Fragment, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import toast from "react-hot-toast";
 import { convertToBase64 } from "../UploadImage/utils";
 
 type Props = {
@@ -47,7 +48,7 @@ export function ButtonMenuUploadImage(props: Props) {
           className={cn(
             "w-fit h-10 bg-surface text-surface-foreground py-2 px-4 border rounded hover:bg-primary hover:text-primary-foreground transition-colors duration-200 ease-in-out cursor-pointer",
             {
-              "border px-4 py-2 text-xs font-bold text-primary-foreground bg-primary rounded hover:bg-surface hover:text-surface-foreground transition-colors duration-200 ease-in-out":
+              "h-fit border px-4 py-2 text-xs font-bold text-primary-foreground bg-primary rounded hover:bg-surface hover:text-surface-foreground transition-colors duration-200 ease-in-out":
                 variant,
             },
           )}
@@ -65,10 +66,10 @@ export function ButtonMenuUploadImage(props: Props) {
         >
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-100"
+            enter="ease-out duration-50"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="ease-in duration-50"
+            leave="ease-in duration-0"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
@@ -79,10 +80,10 @@ export function ButtonMenuUploadImage(props: Props) {
             <div className="flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
-                enter="ease-out duration-100"
+                enter="ease-out duration-50"
                 enterFrom="opacity-0 scale-95"
                 enterTo="opacity-100 scale-100"
-                leave="ease-in duration-50"
+                leave="ease-in duration-0"
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
