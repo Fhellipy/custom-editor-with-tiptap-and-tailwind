@@ -5,4 +5,7 @@ export * from "./button-menu-script";
 export * from "./button-menu-table";
 export * from "./button-menu-text-align";
 export * from "./button-menu-text-color";
+export * from "./button-menu-upload-image";
+export * from "./button-menu-upload-link";
+export * from "./button-menu-upload-video";
 export * from "./menu-dropdown";
