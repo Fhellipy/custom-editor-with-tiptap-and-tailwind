@@ -18,6 +18,11 @@ export function ButtonMenuUploadImage(props: Props) {
   const [open, setOpen] = useState(false);
 
   const { getRootProps } = useDropzone({
+    accept: {
+      "image/jpeg": [".jpeg"],
+      "image/jpg": [".jpg"],
+      "image/png": [".png"],
+    },
     onDrop: async acceptedFiles => {
       const base64 = (await convertToBase64(acceptedFiles[0])) as string;
 
