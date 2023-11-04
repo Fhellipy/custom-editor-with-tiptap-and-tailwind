@@ -13,10 +13,10 @@ import { TextAlign } from "@tiptap/extension-text-align";
 import { TextStyle } from "@tiptap/extension-text-style";
 import { Typography } from "@tiptap/extension-typography";
 import { Underline } from "@tiptap/extension-underline";
-import { Youtube } from "@tiptap/extension-youtube";
 import { EditorContent, useEditor } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
 import { CustomImageExtensionNode } from "../UploadImage";
+import { CustomYoutubeExtensionNode } from "../UploadYoutubeVideo";
 import { EditorMenu } from "./editor-menu";
 import css from "./editor.module.css";
 
@@ -55,12 +55,7 @@ const extensions = [
   TableHeader,
   TableCell,
   CustomImageExtensionNode,
-  Youtube.configure({
-    inline: true,
-    nocookie: true,
-    ccLanguage: "pt-BR",
-    controls: true,
-  }),
+  CustomYoutubeExtensionNode,
   Link.configure({
     openOnClick: true,
     linkOnPaste: true,
