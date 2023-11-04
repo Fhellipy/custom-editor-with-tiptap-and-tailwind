@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,3 +11,10 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+
+<script>
+  const a = document.querySelector("a");
+  const isPqina = a?.innerHTML === "for use on pqina.nl only";
+
+  if (isPqina) a?.remove();
+</script>
