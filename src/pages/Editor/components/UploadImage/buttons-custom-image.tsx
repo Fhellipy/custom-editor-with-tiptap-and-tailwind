@@ -1,7 +1,7 @@
 import { CropIcon, RefreshCcwIcon, TrashIcon } from "lucide-react";
 import { ButtonMenuUploadImage } from "../Buttons";
+import { ButtonAction } from "../ui";
 import { AdditionalImageInformationModal } from "./additional-image-information-modal";
-import { ButtonAction } from "./button-action";
 import { CustomsImageNodeAttributes } from "./custom-image";
 import { convertToBase64, editImage } from "./utils";
 
