@@ -52,6 +52,7 @@ export default {
       },
       animation: {
         "scale-up": "scale-up 200ms",
+        "scale-down": "scale-down 200ms",
       },
       keyframes: {
         "scale-up": {
@@ -59,6 +60,13 @@ export default {
           "25%": { transform: "rotate(-10deg)" },
           "50%": { transform: "rotate(10deg)" },
           "100%": { transform: "rotate(-10deg)" },
+        },
+
+        "scale-down": {
+          "0%": { transform: "rotate(-10deg)" },
+          "25%": { transform: "rotate(10deg)" },
+          "50%": { transform: "rotate(-10deg)" },
+          "100%": { transform: "rotate(10deg)" },
         },
       },
     },
