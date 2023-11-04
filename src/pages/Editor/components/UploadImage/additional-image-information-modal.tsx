@@ -1,7 +1,8 @@
-import { Dialog, Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, ChevronsUpDownIcon, PenSquareIcon } from "lucide-react";
+import { Dialog, Transition } from "@headlessui/react";
+import { PenSquareIcon } from "lucide-react";
 import { Fragment, useState } from "react";
-import { ButtonAction } from "./button-action";
+import { ListBoxPosition } from "../ui";
+import { ButtonAction } from "../ui/button-action";
 import { CustomsImageNodeAttributes } from "./custom-image";
 
 type Props = {
@@ -71,7 +72,7 @@ export function AdditionalImageInformationModal({
                   </Dialog.Title>
 
                   <div className="h-full flex flex-col text-sm mt-2">
-                    <JustifyImage
+                    <ListBoxPosition
                       position={defaultValues.justify ?? "flex-start"}
                       setPosition={position => {
                         onSave({
