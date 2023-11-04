@@ -9,12 +9,11 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      const a = document.querySelector("a");
+      const isPqina = a?.innerHTML === "for use on pqina.nl only";
+
+      if (isPqina) a?.remove();
+    </script>
   </body>
 </html>
-
-<script>
-  const a = document.querySelector("a");
-  const isPqina = a?.innerHTML === "for use on pqina.nl only";
-
-  if (isPqina) a?.remove();
-</script>
