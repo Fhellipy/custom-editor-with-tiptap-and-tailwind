@@ -14,6 +14,7 @@ import {
   StrikethroughIcon,
   UnderlineIcon,
   WrapTextIcon,
+  YoutubeIcon,
 } from "lucide-react";
 import {
   ButtonMenu,
@@ -99,7 +100,10 @@ export function EditorMenu({ editor }: EditorMenuProps) {
         }}
       />
 
-      <ButtonMenuUploadVideo editor={editor} />
+      <ButtonMenuUploadVideo
+        icon={<YoutubeIcon size={20} />}
+        onSave={video => editor?.chain().focus().setCustomYoutube(video).run()}
+      />
       <ButtonMenuUploadLink editor={editor} />
 
       <ButtonMenuTable editor={editor} />
