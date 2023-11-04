@@ -1,35 +1,52 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Editor } from "@tiptap/react";
-import { YoutubeIcon } from "lucide-react";
 import { Fragment, useState } from "react";
 import { ButtonMenu } from ".";
+import { ListBoxPosition } from "../ui";
 
-type Props = {
-  editor: Editor | null;
+type JustifyOptions = "center" | "flex-start" | "flex-end";
+
+type VideoType = {
+  src: string;
+  height: number;
+  width: number;
+  justify: JustifyOptions;
 };
 
-export function ButtonMenuUploadVideo({ editor }: Props) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [url, setUrl] = useState("");
-  const [height, setHeight] = useState(200);
-  const [width, setWidth] = useState(300);
+type Props = {
+  variant?: boolean;
+  icon: React.ReactNode;
+  initialValue?: VideoType;
+  onSave: (video: VideoType) => void;
+};
 
-  if (!editor) {
-    return null;
-  }
+export function ButtonMenuUploadVideo(props: Props) {
+  const { initialValue, icon, onSave, variant } = props;
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [url, setUrl] = useState(initialValue?.src ?? "");
+  const [height, setHeight] = useState(initialValue?.height ?? 200);
+  const [width, setWidth] = useState(initialValue?.width ?? 300);
+  const [position, setPosition] = useState<JustifyOptions>(
+    initialValue?.justify ?? "flex-start",
+  );
 
   function closeModal() {
     setIsOpen(false);
-    setUrl("");
-    setHeight(200);
-    setWidth(300);
+
+    if (!initialValue) {
+      setUrl("");
+      setHeight(200);
+      setWidth(300);
+      setPosition("flex-start");
+    }
   }
 
   return (
     <>
       <ButtonMenu
+        variant={variant}
         title="Link do Youtube"
-        icon={<YoutubeIcon size={20} />}
+        icon={icon}
         onClick={() => setIsOpen(true)}
       />
 
@@ -79,6 +96,13 @@ export function ButtonMenuUploadVideo({ editor }: Props) {
                       onChange={ev => setUrl(ev.target.value)}
                     />
 
+                    <ListBoxPosition
+                      position={position}
+                      setPosition={position => {
+                        setPosition(position ?? "flex-start");
+                      }}
+                    />
+
                     <label htmlFor="height" className="mt-2 mb-0.5 text-base">
                       Altura do video
                     </label>
@@ -113,15 +137,12 @@ export function ButtonMenuUploadVideo({ editor }: Props) {
                       onClick={() => {
                         closeModal();
 
-                        editor
-                          ?.chain()
-                          .focus()
-                          .setYoutubeVideo({
-                            src: url,
-                            height,
-                            width,
-                          })
-                          .run();
+                        onSave({
+                          src: url,
+                          height,
+                          width,
+                          justify: position,
+                        });
                       }}
                     >
                       Salvar
